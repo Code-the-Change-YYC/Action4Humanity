@@ -11,13 +11,14 @@ interface Props {
   children?: React.ReactNode;
 }
 
+// TODO: we don't have a production URL
+const TRPC_URL = isDev() ? "http://localhost:8080" : "";
+
 export const TRPCContext = ({ children }: Props) => {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() => {
-    const url = isDev() ? "http://localhost:8080" : "";
-
     return trpc.createClient({
-      links: [httpBatchLink({ url })],
+      links: [httpBatchLink({ url: TRPC_URL })],
     });
   });
 
