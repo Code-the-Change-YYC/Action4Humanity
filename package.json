@@ -1,0 +1,100 @@
+{
+  "name": "action4humanity",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "NODE_ENV='development' nodemon index.ts | pino-pretty"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Code-the-Change-YYC/Action4Humanity.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Code-the-Change-YYC/Action4Humanity/issues"
+  },
+  "homepage": "https://github.com/Code-the-Change-YYC/Action4Humanity#readme",
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/dotenv": "^8.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-config-standard-with-typescript": "^34.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "nodemon": "^2.0.21",
+    "pino-pretty": "^9.4.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@trpc/server": "^10.15.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "pino": "^8.11.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": [
+      "standard-with-typescript",
+      "plugin:prettier/recommended",
+      "prettier"
+    ],
+    "overrides": [],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module",
+      "project": "./tsconfig.json"
+    },
+    "plugins": [
+      "simple-import-sort",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "endOfLine": "auto"
+        }
+      ],
+      "no-console": "warn",
+      "no-eval": "error",
+      "no-var": "error",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_"
+        }
+      ],
+      "@typescript-eslint/consistent-type-imports": [
+        "error",
+        {
+          "prefer": "type-imports"
+        }
+      ],
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "eqeqeq": [
+        "error",
+        "smart"
+      ],
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error"
+    },
+    "ignorePatterns": [
+      "**/node_modules"
+    ]
+  }
+}
