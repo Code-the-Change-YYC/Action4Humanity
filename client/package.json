@@ -37,7 +37,25 @@
       }
     },
     "rules": {
-      "react/react-in-jsx-scope": "off"
+      "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/no-restricted-imports": [
+        "error",
+        {
+          "paths": [
+            {
+              "name": "../server",
+              "allowTypeImports": true
+            },
+            {
+              "name": "@server",
+              "allowTypeImports": true
+            },
+            {
+              "name": "../node_modules"
+            }
+          ]
+        }
+      ]
     }
   }
 }
