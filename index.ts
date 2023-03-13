@@ -1,8 +1,8 @@
 import { createHTTPServer } from "@trpc/server/adapters/standalone";
 import cors from "cors";
 
-import { appRouter } from "./server";
 import logger from "./server/log";
+import { appRouter } from "./server/router";
 import { configureEnv, isDev } from "./server/util";
 
 const config = configureEnv();
