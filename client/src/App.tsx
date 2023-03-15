@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { trpc } from "./trpc";
+import trpc from "./trpc";
 
 function App() {
   const hello = trpc.helloWorld.useQuery("chief keef");
