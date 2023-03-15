@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+
+  crdb:
+    image: cockroachdb/cockroach:v21.2.3
+    ports:
+      - "26257:26257"
+      - "8080:8080"
+    command: start-single-node --insecure --listen-addr=localhost
+    volumes:
+      - "${PWD}/cockroach-data/crdb:/cockroach/cockroach-data"
+    env_file: .env.development

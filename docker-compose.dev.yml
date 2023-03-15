@@ -1,0 +1,17 @@
+version: '3.8'
+
+# NOTE: this is a work in progress, in the future we'll use this file for a fully 
+# containerized dev environment. 
+
+services:
+  action4humanity:
+    image: action4humanity
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+      - 9229:9229
+    command: ["npm", "run", "dev"]

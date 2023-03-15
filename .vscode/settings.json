@@ -4,4 +4,7 @@
         "source.fixAll": true
     },
     "eslint.debug": true,
+    "[dockercompose]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
 }
