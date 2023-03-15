@@ -19,11 +19,11 @@ npm install
 for local development start both the server and client in separate processes
 ```bash
 # server
-npm run cockroach # starts database
+npm run cock # starts database
 npm run dev
 
 # when you're done developing (stops database)
-npm run cockroach:stop 
+npm run cock:stop 
 ```
 ```bash
 # client
