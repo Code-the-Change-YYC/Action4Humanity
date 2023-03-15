@@ -14,7 +14,7 @@ const server = createHTTPServer({
 });
 
 const startServer = () => {
-  const { port } = server.listen(8080);
+  const { port } = server.listen(3000);
   if (isDev()) {
     // eslint-disable-next-line no-console
     console.log(
