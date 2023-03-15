@@ -8,8 +8,8 @@
     "dev": "NODE_ENV='development' nodemon index.ts | pino-pretty",
     "build": "rimraf dist/ && tsc -p tsconfig.prod.json && copyfiles .env.production dist/",
     "start": "NODE_ENV='production' node dist/index.js",
-    "cockroach": "docker compose up --detach --remove-orphans",
-    "cockroach:stop": "docker compose down --remove-orphans"
+    "cock": "docker compose up --detach --remove-orphans",
+    "cock:stop": "docker compose down --remove-orphans"
   },
   "repository": {
     "type": "git",
