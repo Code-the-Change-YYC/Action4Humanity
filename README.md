@@ -37,3 +37,4 @@ additional scripts can be found in the package.json files in the root and client
 * [trpc](https://trpc.io)
 * [react](https://reactjs.org) ([ts cheatsheet](https://react-typescript-cheatsheet.netlify.app))
 * [cockroachdb](https://www.cockroachlabs.com/docs/cockroachcloud/learn-cockroachdb-sql.html) (postgresql)
+* [prisma](https://www.prisma.io) (install vs code extension: Prisma.prisma)
