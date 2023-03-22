@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "NODE_ENV='test' && DOTENV_CONFIG_PATH='./.env.test' jest",
-    "dev": "NODE_ENV='development' nodemon index.ts | pino-pretty",
+    "dev": "cross-env NODE_ENV='development' nodemon index.ts | pino-pretty",
     "build": "rimraf dist/ && tsc -p tsconfig.prod.json && copyfiles .env.production dist/",
     "start": "NODE_ENV='production' node dist/index.js",
     "cock": "docker compose up --detach --remove-orphans",
@@ -28,6 +28,7 @@
     "@types/jest": "^29.4.1",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-config-standard-with-typescript": "^34.0.0",
@@ -110,7 +111,11 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testPathIgnorePatterns": ["client"],
-    "setupFiles": ["dotenv/config"]
+    "testPathIgnorePatterns": [
+      "client"
+    ],
+    "setupFiles": [
+      "dotenv/config"
+    ]
   }
 }
