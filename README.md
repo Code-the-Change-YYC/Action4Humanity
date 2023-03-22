@@ -1,4 +1,5 @@
-# Action4Humanity - Code the Change
+SET NODE_ENV=development
+node foo.js# Action4Humanity - Code the Change
 
 ## set up
 dependencies:
