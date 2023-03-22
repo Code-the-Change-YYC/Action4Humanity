@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "NODE_ENV='test' && DOTENV_CONFIG_PATH='./.env.test' jest",
-    "dev": "NODE_ENV='development' nodemon index.ts | pino-pretty",
+    "dev": "cross-env NODE_ENV='development' nodemon index.ts | pino-pretty",
     "build": "rimraf dist/ && tsc -p tsconfig.prod.json && copyfiles .env.production dist/",
     "start": "NODE_ENV='production' node dist/index.js",
     "cock": "docker compose up --detach --remove-orphans",
