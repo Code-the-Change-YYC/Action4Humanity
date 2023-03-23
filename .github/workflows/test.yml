@@ -21,8 +21,10 @@ jobs:
         with:
           path: ~/.npm
           key: npm-${{ hashFiles('**/package-lock.json') }}
-      - name: install deps
-        if: steps.cache-deps.outputs.cache_hit != 'true'
+          restore-keys: |
+            npm-
+      - if: ${{ steps.cache-deps.outputs.cache-hit != 'true' }}
+        name: install deps
         run: npm ci && cd client && npm ci
       
       - name: lint server 🧹
