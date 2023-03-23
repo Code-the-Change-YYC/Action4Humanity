@@ -1,0 +1,12 @@
+name: add reviewers 🕵🏽
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: hkusu/review-assign-action@v1
+        with:
+          assignees: ${{ github.actor }}
+          reviewers: abodthedude25, AjayArumugam07, arminsandhu, ayo1-olabode
