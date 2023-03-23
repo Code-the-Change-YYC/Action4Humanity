@@ -1,0 +1,42 @@
+name: lint and test 🧹
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DEBUG: cli-engine
+    steps:
+      - uses: actions/checkout@v3
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: cache deps ♻️
+        id: cache-deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('**/package-lock.json') }}
+      - name: install deps
+        if: steps.cache-deps.outputs.cache_hit != 'true'
+        run: npm ci && cd client && npm ci
+      
+      - name: lint server 🧹
+        run: npm run lint
+
+      - name: lint client 🧼
+        working-directory: ./client
+        run: npm run lint
+      
+      - name: test server 🧪
+        run: npm test
+      
+      - name: test client 🧪
+        working-directory: ./client
+        run: npm test
+      
+      

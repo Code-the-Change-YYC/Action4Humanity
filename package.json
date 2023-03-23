@@ -10,7 +10,8 @@
     "start": "NODE_ENV='production' node dist/index.js",
     "cock": "docker compose up --detach --remove-orphans",
     "cock:stop": "docker compose down --remove-orphans",
-    "prisma": "dotenv -e .env.development -- prisma --"
+    "prisma": "dotenv -e .env.development -- prisma --",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -108,7 +109,8 @@
     },
     "ignorePatterns": [
       "**/node_modules",
-      "dist/"
+      "dist/",
+      "client/"
     ]
   },
   "jest": {
