@@ -1,53 +1,66 @@
-import { createContext, useState, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface Props {
-  children: React.ReactNode | React.ReactNode[]
-};
-
-type userInfoType = {
-  uid: string
+  children: React.ReactNode | React.ReactNode[];
 }
 
-type UserAuthContextType = {
-  userInfo: userInfoType | null,
-  setUserInfo: React.Dispatch<React.SetStateAction<userInfoType | null>>,
-  getLocalStorage: () => void,
-  setLocalStorage: () => void,
-  register: () => void,
-  login: () => void,
-  logout: () => void
-};
+interface userInfoType {
+  uid: string;
+}
 
-const UserAuthContext = createContext<UserAuthContextType>({} as UserAuthContextType);
+interface UserAuthContextType {
+  userInfo: userInfoType | null;
+  setUserInfo: React.Dispatch<React.SetStateAction<userInfoType | null>>;
+  getLocalStorage: () => void;
+  setLocalStorage: () => void;
+  register: () => void;
+  login: () => void;
+  logout: () => void;
+}
 
-export function UserAuthContextProvider({children}: Props) {
+const UserAuthContextParams: UserAuthContextType = {
+  // only doing this because of eslint and idk how to fix it
+  userInfo: null,
+  setUserInfo: () => {},
+  getLocalStorage: () => {},
+  setLocalStorage: () => {},
+  register: () => {},
+  login: () => {},
+  logout: () => {},
+} as const;
+
+const UserAuthContext = createContext<UserAuthContextType>(
+  UserAuthContextParams
+);
+
+export function UserAuthContextProvider({ children }: Props) {
   const [userInfo, setUserInfo] = useState<userInfoType | null>(null);
 
-  const getLocalStorage = () => {
+  const getLocalStorage = () => {};
 
-  };
+  const setLocalStorage = () => {};
 
-  const setLocalStorage = () => {
+  const register = () => {};
 
-  };
+  const login = () => {};
 
-  const register = () => {
-
-  }
-
-  const login = () => {
-
-  };
-
-  const logout = () => {
-
-  };
+  const logout = () => {};
 
   return (
-    <UserAuthContext.Provider value={{userInfo, setUserInfo, getLocalStorage, setLocalStorage, register, login, logout }}>
+    <UserAuthContext.Provider
+      value={{
+        userInfo,
+        setUserInfo,
+        getLocalStorage,
+        setLocalStorage,
+        register,
+        login,
+        logout,
+      }}
+    >
       {children}
     </UserAuthContext.Provider>
-  )
+  );
 }
 
 export function useUserAuth(): UserAuthContextType {

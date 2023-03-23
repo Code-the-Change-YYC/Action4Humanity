@@ -1,8 +1,9 @@
-import trpc from "./trpc";
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Navbar from "./components/Navbar";
+import trpc from "./trpc";
 
 function App() {
   const hello = trpc.helloWorld.useQuery("chief keef");

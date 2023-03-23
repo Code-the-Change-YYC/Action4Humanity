@@ -2,10 +2,10 @@ import "./index.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import { TRPCContext } from "./contexts/trpc";
-import { BrowserRouter } from "react-router-dom";
 import { UserAuthContextProvider } from "./contexts/UserAuthContext";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
@@ -18,4 +18,4 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       </UserAuthContextProvider>
     </TRPCContext>
   </React.StrictMode>
-)
+);
