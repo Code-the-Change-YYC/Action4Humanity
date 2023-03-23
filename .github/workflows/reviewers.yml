@@ -9,4 +9,4 @@ jobs:
       - uses: hkusu/review-assign-action@v1
         with:
           assignees: ${{ github.actor }}
-          reviewers: abodthedude25, AjayArumugam07, arminsandhu, ayo1-olabode
+          reviewers: abodthedude25, AjayArumugam07, arminsandhu, ayo1-olabode, dhyxy
