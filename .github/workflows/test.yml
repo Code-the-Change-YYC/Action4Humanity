@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      DEBUG: cli-engine
+      DEBUG: eslint:cli-engine
     steps:
       - uses: actions/checkout@v3
       - name: setup node
