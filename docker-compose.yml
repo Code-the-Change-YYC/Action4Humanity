@@ -10,4 +10,4 @@ services:
     command: start-single-node --insecure --advertise-addr=localhost
     volumes:
       - "${PWD}/cockroach-data/crdb:/cockroach/cockroach-data"
-    env_file: .env.development
+    env_file: .env
