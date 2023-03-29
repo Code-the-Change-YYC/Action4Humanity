@@ -43,6 +43,7 @@ const config = {
     "no-var": "error",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
+    "no-restricted-imports": ["error", { patterns: [".*"] }],
   },
 };
 
