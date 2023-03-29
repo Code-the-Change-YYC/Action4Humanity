@@ -1,41 +1,35 @@
-SET NODE_ENV=development
-node foo.js# Action4Humanity - Code the Change
+# Code the Change - Action4Humanity
 
 ## set up
 dependencies:
 * [node](https://nodejs.org/en/)
 * [docker](https://www.docker.com)
 
-```bash
-# for server
-npm install
-
-# for client
-cd client
-npm install
+copy .env.example into a .env file
+```bash 
+cp .env.example .env
 ```
 
 ## get started
-
-for local development start both the server and client in separate processes
+for local development start both the server and client in separate processes.
 ```bash
 # server
 npm run cock # starts database
 npm run dev
 
-# when you're done developing (stops database)
-npm run cock:stop 
-```
-```bash
-# client
-npm run dev
+# when ur done
+npm run cock:stop
 ```
 
-additional scripts can be found in the package.json files in the root and client folders
+see [package.json](package.json) for other relevant scripts
 
-## tech
-* [typescript](https://www.typescriptlang.org)
-* [trpc](https://trpc.io)
-* [react](https://reactjs.org) ([ts cheatsheet](https://react-typescript-cheatsheet.netlify.app))
-* [cockroachdb](https://www.cockroachlabs.com/docs/cockroachcloud/learn-cockroachdb-sql.html) (postgresql)
-* [prisma](https://www.prisma.io) (install vs code extension: Prisma.prisma)
+## t3
+
+This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+
+- [Next.js](https://nextjs.org)
+- [NextAuth.js](https://next-auth.js.org)
+- [Prisma](https://prisma.io)
+- [Tailwind CSS](https://tailwindcss.com)
+- [tRPC](https://trpc.io)
+

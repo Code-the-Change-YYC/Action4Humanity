@@ -19,20 +19,7 @@ jobs:
           cache-dependency-path: '**/package-lock.json'
   
       - name: install deps
-        run: npm ci && cd client && npm ci
+        run: npm ci
       
-      - name: lint server 🧹
+      - name: lint app 🧹
         run: npm run lint
-
-      - name: lint client 🧼
-        working-directory: ./client
-        run: npm run lint
-      
-      - name: test server 🧪
-        run: npm test
-      
-      - name: test client 🧪
-        working-directory: ./client
-        run: npm test
-      
-      
