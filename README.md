@@ -5,13 +5,13 @@ dependencies:
 * [node](https://nodejs.org/en/)
 * [docker](https://www.docker.com)
 
-copy .env.example into a .env file
+copy .env.example into a .env file and add the protected secrets
 ```bash 
 cp .env.example .env
 ```
 
 ## get started
-for local development start both the server and client in separate processes.
+for local development
 ```bash
 # server
 npm run cock # starts database
