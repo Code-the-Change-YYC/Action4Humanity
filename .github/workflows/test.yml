@@ -20,6 +20,9 @@ jobs:
   
       - name: install deps
         run: npm ci
+
+      - name: configure env var 🌎
+        run: cp .env.test .env
       
       - name: lint app 🧹
         run: npm run lint
