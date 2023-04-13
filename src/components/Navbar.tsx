@@ -1,12 +1,15 @@
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const isAuthenticated = useSession().status === "authenticated";
 
   return (
     <>
@@ -51,7 +54,7 @@ const Navbar = () => {
 
             <div className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
-                {pathname === "/" && (
+                {!isAuthenticated && pathname === "/" && (
                   <>
                     <Link
                       className="block rounded-md bg-orange px-5 py-2.5 text-sm font-medium text-white"
@@ -67,6 +70,11 @@ const Navbar = () => {
                       Register
                     </Link>
                   </>
+                )}
+                {isAuthenticated && (
+                  <a onClick={() => void signOut()} className="cursor-pointer">
+                    <LogoutIcon />
+                  </a>
                 )}
               </div>
 

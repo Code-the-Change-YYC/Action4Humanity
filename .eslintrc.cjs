@@ -45,6 +45,8 @@ const config = {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "no-restricted-imports": ["error", { patterns: [".*"] }],
+    "tailwindcss/no-custom-classname": "off",
+    "tailwindcss/classnames-order": "off", // tcss prettier plugin handles this
   },
 };
 
