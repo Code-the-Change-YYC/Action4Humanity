@@ -1,14 +1,10 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import { signIn, signOut, useSession } from "next-auth/react";
 
 import Button from "~/components/Button";
 import Navbar from "~/components/Navbar";
-import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
   return (
     <>
       <Navbar />
