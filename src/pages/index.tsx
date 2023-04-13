@@ -2,12 +2,10 @@ import type { NextPage } from "next";
 import Image from "next/image";
 
 import Button from "~/components/Button";
-import Navbar from "~/components/Navbar";
 
 const Home: NextPage = () => {
   return (
     <>
-      <Navbar />
       <div className="overflow-hidden bg-gray-50 p-6 pt-24 sm:grid sm:grid-cols-2">
         <div>
           <Image
