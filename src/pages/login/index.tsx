@@ -7,7 +7,7 @@ import { getProviders, signIn } from "next-auth/react";
 
 import { getServerAuthSession } from "~/server/auth";
 
-const Index: NextPage = ({
+const LoginPage: NextPage = ({
   providers,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
@@ -20,7 +20,11 @@ const Index: NextPage = ({
           <div className="flex flex-col items-center justify-center">
             {Object.values(providers ?? {}).map((provider) => (
               <div key={provider.id}>
-                <button onClick={() => void signIn(provider.id)}>
+                <button
+                  onClick={() =>
+                    void signIn(provider.id, { callbackUrl: "/dashboard" })
+                  }
+                >
                   {provider.name}
                 </button>
               </div>
@@ -32,7 +36,7 @@ const Index: NextPage = ({
   );
 };
 
-export default Index;
+export default LoginPage;
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext

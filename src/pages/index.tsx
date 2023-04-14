@@ -19,20 +19,20 @@ const Home: NextPage = () => {
         <div className="p-8 md:p-12 lg:px-16 lg:py-24">
           <div className="mx-auto max-w-xl sm:text-left">
             <div className="text-3xl font-bold text-gray-900 md:text-3xl">
-              Info
+              Welcome!
             </div>
 
             <div className="pt-3 text-gray-500 md:mt-4 md:block">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Recusandae dolores, possimus pariatur animi temporibus nesciunt
-              praesentium dolore sed nulla ipsum eveniet corporis quidem,
-              mollitia itaque minus soluta, voluptates neque explicabo tempora
-              nisi culpa eius atque dignissimos. Molestias explicabo corporis
-              voluptatem?
+              Welcome to Action4Humanity&apos;s redeveloped volunteer dashboard.
+              Login to the system using the Google email you&apos;ve registered
+              with Action4Humanity and find all volunteering related events,
+              announcements, and news in just one place. If you&apos;re unable
+              to sign in and access the dashboard please reach out to an
+              administrator.
             </div>
 
             <div className="mt-4 md:mt-8">
-              <Button label="Get Started" link="/login" />
+              <Button label="Login" link="/login" />
             </div>
           </div>
         </div>

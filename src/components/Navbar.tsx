@@ -1,4 +1,5 @@
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
@@ -29,29 +30,6 @@ const Navbar = () => {
           </Link>
 
           <div className="flex flex-1 items-center justify-end">
-            {/* Uncomment if needed */}
-            {/* <nav aria-label="Site Nav" className="hidden md:block"> */}
-            {/*   <ul className="flex gap-6 items-center text-sm"> */}
-            {/*     <li> */}
-            {/*       <Link */}
-            {/*         className="text-gray-500 transition hover:text-gray-500/75" */}
-            {/*         to="/" */}
-            {/*       > */}
-            {/*         Link1 */}
-            {/*       </Link> */}
-            {/*     </li> */}
-
-            {/*     <li> */}
-            {/*       <Link */}
-            {/*         className="text-gray-500 transition hover:text-gray-500/75" */}
-            {/*         to="/" */}
-            {/*       > */}
-            {/*         Link2 */}
-            {/*       </Link> */}
-            {/*     </li> */}
-            {/*   </ul> */}
-            {/* </nav> */}
-
             <div className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
                 {!isAuthenticated && pathname === "/" && (
@@ -62,25 +40,9 @@ const Navbar = () => {
                     >
                       Login
                     </Link>
-
-                    <Link
-                      className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-orange transition hover:text-black sm:block"
-                      href="/register"
-                    >
-                      Register
-                    </Link>
                   </>
                 )}
-                {isAuthenticated && (
-                  <a onClick={() => void signOut()} className="cursor-pointer">
-                    <LogoutIcon />
-                  </a>
-                )}
-              </div>
-
-              {pathname !== "/" &&
-                pathname !== "/login" &&
-                pathname !== "/register" && (
+                {pathname !== "/" && pathname !== "/login" && (
                   <>
                     <div>
                       <ChatBubbleOutlineIcon />
@@ -93,6 +55,23 @@ const Navbar = () => {
                     </div>
                   </>
                 )}
+                {isAuthenticated && (
+                  <>
+                    {pathname !== "/dashboard" && (
+                      <Link href="/dashboard" className="cursor-pointer">
+                        <DashboardIcon className="hover:fill-orange" />
+                      </Link>
+                    )}
+                    <Link
+                      href="/"
+                      onClick={() => void signOut({ callbackUrl: "/" })}
+                      className="cursor-pointer"
+                    >
+                      <LogoutIcon className="hover:fill-orange" />
+                    </Link>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
