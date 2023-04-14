@@ -1,7 +1,8 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 
 import AnnouncementBanner from "~/components/AnnouncementBanner";
 import CardComponent from "~/components/CardComponent";
+import { getServerAuthSession } from "~/server/auth";
 
 const Dashboard: NextPage = () => {
   return (
@@ -22,3 +23,11 @@ const Dashboard: NextPage = () => {
 };
 
 export default Dashboard;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getServerAuthSession(context);
+  if (!session?.user.id) {
+    return { redirect: { destination: "/" }, props: {} };
+  }
+  return { props: {} };
+};
