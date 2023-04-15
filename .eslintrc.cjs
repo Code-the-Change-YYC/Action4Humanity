@@ -38,6 +38,13 @@ const config = {
       },
     ],
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        selector: "typeLike",
+        format: ["PascalCase"],
+      },
+    ],
     eqeqeq: ["error", "smart"],
     "prettier/prettier": ["error", prettierConfig],
     "no-eval": "error",
