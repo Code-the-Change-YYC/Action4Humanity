@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "next dev | pino-pretty",
+    "predev": "npm run cock",
+    "postdev": "npm run cock:stop",
     "lint": "next lint",
     "start": "next start",
     "cock": "docker compose up --detach --remove-orphans",

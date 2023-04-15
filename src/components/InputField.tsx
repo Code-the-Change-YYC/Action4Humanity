@@ -1,11 +1,11 @@
-interface inputFieldProps {
+interface InputFieldProps {
   htmlFor: string;
   label: string;
   type: string;
   placeholder: string;
 }
 
-const InputField = (props: inputFieldProps) => {
+const InputField = (props: InputFieldProps) => {
   return (
     <>
       <label
