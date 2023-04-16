@@ -17,10 +17,12 @@ const Action4Humanity: AppType<{ session: Session | null }> = ({
       <Head>
         <title>Action 4 Humanity</title>
       </Head>
-      <main className="min-h-screen">
+      <main>
         <SessionProvider session={session}>
           <Navbar />
-          <Component {...pageProps} />
+          <div className="mx-auto mt-20 w-screen max-w-screen-xl">
+            <Component {...pageProps} />
+          </div>
         </SessionProvider>
       </main>
     </>
