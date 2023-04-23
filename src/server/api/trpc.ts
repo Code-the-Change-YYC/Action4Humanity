@@ -65,6 +65,7 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
  * ZodErrors so that you get typesafety on the frontend if your procedure fails due to validation
  * errors on the backend.
  */
+import { UserRole } from "@prisma/client";
 import { initTRPC, TRPCError } from "@trpc/server";
 import differenceInMilliseconds from "date-fns/differenceInMilliseconds";
 import superjson from "superjson";
@@ -131,6 +132,22 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
   });
 });
 
+const enforceUserIsAdmin = t.middleware(({ ctx, next }) => {
+  if (ctx.session?.user.role !== UserRole.ADMIN) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+
+  return next({
+    ctx: {
+      ...ctx,
+      session: {
+        ...ctx.session,
+        user: { ...ctx.session.user, role: "ADMIN" as const },
+      },
+    },
+  });
+});
+
 /**
  * Protected (authenticated) procedure
  *
@@ -140,3 +157,8 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
  * @see https://trpc.io/docs/procedures
  */
 export const protectedProcedure = publicProcedure.use(enforceUserIsAuthed);
+
+/**
+ * Admin procedure
+ */
+export const adminProcedure = protectedProcedure.use(enforceUserIsAdmin);
