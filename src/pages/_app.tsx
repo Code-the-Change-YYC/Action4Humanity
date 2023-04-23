@@ -20,7 +20,7 @@ const Action4Humanity: AppType<{ session: Session | null }> = ({
       <main>
         <SessionProvider session={session}>
           <Navbar />
-          <div className="mx-auto mt-20 w-screen max-w-screen-xl">
+          <div className="mx-auto mt-36 w-screen max-w-screen-xl">
             <Component {...pageProps} />
           </div>
         </SessionProvider>
