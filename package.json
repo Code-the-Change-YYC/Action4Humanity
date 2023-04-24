@@ -5,6 +5,8 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev | pino-pretty",
+    "predev": "npm run cock",
+    "postdev": "npm run cock:stop",
     "lint": "next lint",
     "start": "next start",
     "cock": "docker compose up --detach --remove-orphans",
@@ -30,6 +32,7 @@
     "pino": "^8.11.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.9",
     "superjson": "1.12.2",
     "zod": "^3.21.4"
   },
@@ -45,6 +48,7 @@
     "eslint": "^8.36.0",
     "eslint-config-next": "^13.2.4",
     "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-mui-path-imports": "^0.0.15",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",

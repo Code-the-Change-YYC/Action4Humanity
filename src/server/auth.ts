@@ -1,4 +1,6 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import type { User as OurUser } from "@prisma/client";
+import { UserRole } from "@prisma/client";
 import { type GetServerSidePropsContext } from "next";
 import {
   type DefaultSession,
@@ -20,15 +22,12 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string;
-      // ...other properties
-      // role: UserRole;
+      role: UserRole;
     } & DefaultSession["user"];
   }
 
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface User extends OurUser {}
 }
 
 /**
@@ -41,9 +40,24 @@ export const authOptions: NextAuthOptions = {
     session({ session, user }) {
       if (session.user) {
         session.user.id = user.id;
-        // session.user.role = user.role; <-- put other properties on the session here
+        session.user.role = user.role;
       }
+
       return session;
+    },
+    async signIn({ user }) {
+      if (!user.email) {
+        return false;
+      }
+
+      if (user.role === UserRole.ADMIN) {
+        return true;
+      }
+
+      const isAllowlisted = !!(await prisma.emailAllowlist.findUnique({
+        where: { email: user.email },
+      }));
+      return isAllowlisted;
     },
   },
   adapter: PrismaAdapter(prisma),
@@ -62,6 +76,9 @@ export const authOptions: NextAuthOptions = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
+  pages: {
+    signIn: "/login",
+  },
 };
 
 /**

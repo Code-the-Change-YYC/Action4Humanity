@@ -1,12 +1,34 @@
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
+import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import Drawer from "@mui/material/Drawer";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
+import { useState } from "react";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const isAuthenticated = useSession().status === "authenticated";
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const navIcons = (
+    [
+      ["/dashboard", DashboardOutlinedIcon],
+      ["/chat", ChatBubbleOutlineIcon],
+      ["/profile", PermIdentityIcon],
+    ] as const
+  ).map(
+    ([path, Icon]) =>
+      pathname !== path && (
+        <Link href={path} key={path} onClick={() => setIsDrawerOpen(false)}>
+          <Icon className="hover:fill-orange" fontSize="inherit" />
+        </Link>
+      )
+  );
 
   return (
     <>
@@ -26,32 +48,9 @@ const Navbar = () => {
           </Link>
 
           <div className="flex flex-1 items-center justify-end">
-            {/* Uncomment if needed */}
-            {/* <nav aria-label="Site Nav" className="hidden md:block"> */}
-            {/*   <ul className="flex gap-6 items-center text-sm"> */}
-            {/*     <li> */}
-            {/*       <Link */}
-            {/*         className="text-gray-500 transition hover:text-gray-500/75" */}
-            {/*         to="/" */}
-            {/*       > */}
-            {/*         Link1 */}
-            {/*       </Link> */}
-            {/*     </li> */}
-
-            {/*     <li> */}
-            {/*       <Link */}
-            {/*         className="text-gray-500 transition hover:text-gray-500/75" */}
-            {/*         to="/" */}
-            {/*       > */}
-            {/*         Link2 */}
-            {/*       </Link> */}
-            {/*     </li> */}
-            {/*   </ul> */}
-            {/* </nav> */}
-
             <div className="flex items-center gap-4">
-              <div className="sm:flex sm:gap-4">
-                {pathname === "/" && (
+              <div className="text-black sm:flex sm:gap-4">
+                {!isAuthenticated && (
                   <>
                     <Link
                       className="block rounded-md bg-orange px-5 py-2.5 text-sm font-medium text-white"
@@ -59,35 +58,44 @@ const Navbar = () => {
                     >
                       Login
                     </Link>
-
-                    <Link
-                      className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-orange transition hover:text-black sm:block"
-                      href="/register"
-                    >
-                      Register
-                    </Link>
+                  </>
+                )}
+                {isAuthenticated && (
+                  <>
+                    <div className="hidden gap-4 text-2xl md:flex">
+                      {navIcons}
+                      <Link
+                        href="/"
+                        onClick={() => void signOut({ callbackUrl: "/" })}
+                        className="cursor-pointer"
+                      >
+                        <LogoutIcon
+                          className="hover:fill-orange"
+                          fontSize="inherit"
+                        />
+                      </Link>
+                    </div>
+                    <div className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
+                      <a onClick={() => setIsDrawerOpen(true)}>
+                        <MenuIcon />
+                      </a>
+                    </div>
                   </>
                 )}
               </div>
-
-              {pathname !== "/" &&
-                pathname !== "/login" &&
-                pathname !== "/register" && (
-                  <>
-                    <div>
-                      <ChatBubbleOutlineIcon />
-                    </div>
-                    <div>
-                      <PermIdentityIcon />
-                    </div>
-                    <div className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
-                      <MenuIcon />
-                    </div>
-                  </>
-                )}
             </div>
           </div>
         </div>
+        <Drawer
+          className="md:hidden"
+          open={isDrawerOpen}
+          anchor="right"
+          onClose={() => setIsDrawerOpen(false)}
+        >
+          <div className="flex h-screen flex-col justify-evenly gap-8 px-6 py-12 text-3xl">
+            {navIcons}
+          </div>
+        </Drawer>
       </header>
     </>
   );

@@ -5,6 +5,7 @@ import Head from "next/head";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 
+import Navbar from "~/components/Navbar";
 import { api } from "~/utils/api";
 
 const Action4Humanity: AppType<{ session: Session | null }> = ({
@@ -16,9 +17,12 @@ const Action4Humanity: AppType<{ session: Session | null }> = ({
       <Head>
         <title>Action 4 Humanity</title>
       </Head>
-      <main className="min-h-screen">
+      <main>
         <SessionProvider session={session}>
-          <Component {...pageProps} />
+          <Navbar />
+          <div className="mx-auto mt-36 w-screen max-w-screen-xl">
+            <Component {...pageProps} />
+          </div>
         </SessionProvider>
       </main>
     </>
