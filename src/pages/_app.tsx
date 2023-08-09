@@ -1,30 +1,14 @@
-import "~/styles/globals.css";
-
 import { type AppType } from "next/app";
-import Head from "next/head";
-import { type Session } from "next-auth";
-import { SessionProvider } from "next-auth/react";
-
-import Navbar from "~/components/Navbar";
 import { api } from "~/utils/api";
+import "~/styles/globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
-const Action4Humanity: AppType<{ session: Session | null }> = ({
-  Component,
-  pageProps: { session, ...pageProps },
-}) => {
+const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <>
-      <Head>
-        <title>Action 4 Humanity</title>
-      </Head>
-      <main className="min-h-screen">
-        <SessionProvider session={session}>
-          <Navbar />
-          <Component {...pageProps} />
-        </SessionProvider>
-      </main>
-    </>
-  );
+    <ClerkProvider>
+      <Component {...pageProps} />;
+    </ClerkProvider>
+  )
 };
 
-export default api.withTRPC(Action4Humanity);
+export default api.withTRPC(MyApp);
