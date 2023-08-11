@@ -1,19 +1,12 @@
+import { type Event } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 
 interface cardComponentProps {
-  image?: string;
-  date?: string; // can change this later
-  title?: string;
-  description?: string;
+  event: Event;
 }
 
-const CardComponent = ({
-  image,
-  date,
-  title,
-  description,
-}: cardComponentProps) => {
+const CardComponent = ({ event }: cardComponentProps) => {
   return (
     <article className="overflow-hidden rounded-lg shadow transition hover:shadow-lg">
       <Image
@@ -25,18 +18,16 @@ const CardComponent = ({
       />
 
       <div className="bg-white p-4 sm:p-6">
-        <div className="block text-xs text-gray-500">10th Oct 2022</div>
+        <div className="block text-xs text-gray-500">
+          {event.date.toLocaleDateString()} {event.date.toLocaleTimeString()}
+        </div>
 
         <Link href="/">
-          <h3 className="mt-0.5 text-lg text-gray-900">Example Card</h3>
+          <h3 className="mt-0.5 text-lg text-gray-900">{event.name}</h3>
         </Link>
 
         <div className="mt-2 line-clamp-3 text-sm leading-relaxed text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-          dolores, possimus pariatur animi temporibus nesciunt praesentium
-          dolore sed nulla ipsum eveniet corporis quidem, mollitia itaque minus
-          soluta, voluptates neque explicabo tempora nisi culpa eius atque
-          dignissimos. Molestias explicabo corporis voluptatem?
+          {event.description}
         </div>
       </div>
     </article>
