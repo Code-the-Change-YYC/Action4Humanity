@@ -1,11 +1,13 @@
+import type { NextPage } from "next";
+
 import { useUser } from "@clerk/nextjs";
 import type { Event } from "@prisma/client";
-import type { NextPage } from "next";
+
+import { api } from "~/utils/api";
 
 import AnnouncementBanner from "~/components/AnnouncementBanner";
 import CardComponent from "~/components/CardComponent";
 import Navbar from "~/components/Navbar";
-import { api } from "~/utils/api";
 
 const Dashboard: NextPage = () => {
   const { user, isLoaded } = useUser();

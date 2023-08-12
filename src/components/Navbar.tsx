@@ -1,9 +1,10 @@
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
-import MenuIcon from "@mui/icons-material/Menu";
-import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import MenuIcon from "@mui/icons-material/Menu";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 
 const Navbar = () => {
   const pathname = usePathname();

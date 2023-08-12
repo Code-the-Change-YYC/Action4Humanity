@@ -1,6 +1,7 @@
-import { type Event } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
+
+import { type Event } from "@prisma/client";
 
 interface cardComponentProps {
   event: Event;

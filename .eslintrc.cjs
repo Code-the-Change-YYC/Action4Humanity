@@ -22,13 +22,7 @@ const config = {
   parserOptions: {
     project,
   },
-  plugins: [
-    "prettier",
-    "@typescript-eslint",
-    "simple-import-sort",
-    "import",
-    "promise",
-  ],
+  plugins: ["@typescript-eslint", "prettier", "promise"],
   extends: [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
@@ -48,8 +42,7 @@ const config = {
     "prettier/prettier": ["error", prettierConfig],
     "no-eval": "error",
     "no-var": "error",
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
+    "prettier/prettier": "error",
     "no-restricted-imports": ["error", { patterns: [".*"] }],
     "tailwindcss/no-custom-classname": "off",
     "tailwindcss/classnames-order": "off", // tcss prettier plugin handles this

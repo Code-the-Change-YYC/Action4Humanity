@@ -1,15 +1,18 @@
 // /** @type {import("prettier").Config} */
 const config = {
   plugins: [
-    // require.resolve("@trivago/prettier-plugin-sort-imports"),
+    require.resolve("@trivago/prettier-plugin-sort-imports"),
     require.resolve("prettier-plugin-tailwindcss"),
   ],
   endOfLine: "auto",
-  printWidth: 80,
-  tabWidth: 2,
   trailingComma: "all",
   semi: true,
-  importOrder: ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+  importOrder: [
+    "^@(.*)$",
+    "^~/(?!components)(.*)$",
+    "^~/components(.*)$",
+    "^[./]",
+  ],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
 };
