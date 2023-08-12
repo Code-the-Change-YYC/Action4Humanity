@@ -22,7 +22,13 @@ const config = {
   parserOptions: {
     project,
   },
-  plugins: ["@typescript-eslint", "simple-import-sort", "promise"],
+  plugins: [
+    "prettier",
+    "@typescript-eslint",
+    "simple-import-sort",
+    "import",
+    "promise",
+  ],
   extends: [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",

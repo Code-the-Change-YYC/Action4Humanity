@@ -1,14 +1,15 @@
 import { useUser } from "@clerk/nextjs";
-import { Event } from "@prisma/client";
+import type { Event } from "@prisma/client";
 import type { NextPage } from "next";
+
 import AnnouncementBanner from "~/components/AnnouncementBanner";
 import CardComponent from "~/components/CardComponent";
 import Navbar from "~/components/Navbar";
 import { api } from "~/utils/api";
 
 const Dashboard: NextPage = () => {
-  const { user, isLoaded, isSignedIn } = useUser();
-  const { data: events, isLoading } = api.dashboard.getAll.useQuery();
+  const { user, isLoaded } = useUser();
+  const { data: events } = api.dashboard.getAll.useQuery();
 
   return isLoaded ? (
     <>
@@ -19,7 +20,7 @@ const Dashboard: NextPage = () => {
         </h1>
 
         <p className="mt-1.5 text-sm text-gray-500">
-          Let's sign up for an new event! 🎉
+          {"Let's sign up for an new event! 🎉"}
         </p>
       </div>
       <div className="mt-8 min-h-screen px-8">

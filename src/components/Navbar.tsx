@@ -10,10 +10,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header
-        aria-label="Site Header"
-        className="bg-white"
-      >
+      <header aria-label="Site Header" className="bg-white">
         <div className="mx-auto flex h-20 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
           <Link href="/" className="block text-teal-600">
             <Image
